@@ -11,7 +11,7 @@ from twisted.enterprise import adbapi
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from scrapy.utils.project import get_project_settings
-from scrapy import log
+import logging
 
 SETTINGS = get_project_settings()
 
@@ -80,7 +80,7 @@ class MySQLPipeline(object):
                 self.stats.inc_value('database/items_added')
         except:
             self.stats.inc_value('database/items_failed')
-            log.err(conn._last_executed)
+            logging.error(conn._last_executed)
 
     def _handle_error(self, e):
-        log.err(e)
+        logging.error(e)

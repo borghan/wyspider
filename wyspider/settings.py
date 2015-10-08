@@ -31,8 +31,15 @@ START_URLS = [
 ]
 KEYWORDS = [
 ]
-LOG_LEVEL = 'DEBUG'
+LOG_LEVEL = 'INFO'
+CLOSESPIDER_PAGECOUNT = 0
+DEPTH_LIMIT = 0
+# LOG_FILE = 'wyspider.log'
 # End personal setting
+
+# DEPTH_PRIORITY = 1
+# SCHEDULER_DISK_QUEUE = 'scrapy.squeue.PickleFifoDiskQueue'
+# SCHEDULER_MEMORY_QUEUE = 'scrapy.squeue.FifoMemoryQueue'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'wyspider (+http://www.yourdomain.com)'
@@ -90,14 +97,14 @@ USER_AGENT_LIST = [
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'wyspider.random_user_agent.RandomUserAgentMiddleware': 400,
+    'wyspider.middlewares.random_user_agent.RandomUserAgentMiddleware': 400,
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 # EXTENSIONS = {
-#    'scrapy.telnet.TelnetConsole': None,
+#     'wyspider.extensions.item_count_limit.ItemCountLimitExt': 500,
 # }
 
 # Configure item pipelines
