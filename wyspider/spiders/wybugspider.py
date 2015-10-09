@@ -73,7 +73,7 @@ class WySpider(CrawlSpider):
         if confirm_date:
             item['confirm_date'] = confirm_date
         # 部分厂商没有乌云链接
-        if bool(item['title'][0]) is False:
+        if not item['title'][0]:
             item['title'] = response.xpath('//h3[@class="wybug_corp"]/a/text()').extract()
         # item全部统一为string类型
         for x in item:
